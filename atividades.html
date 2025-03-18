@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Exercícios </title>
+</head>
+<body>
+    <!-- NIVEL 1: BÁSICO
+
+    1. Calculadora Simples: -->
+    <h1> Calculadora Simples: </h1>
+    <label for="numero"> Insira o primeiro número: </label>
+    <input type="text" id="numero" name="numero"><br><br>
+    <label for="segundoNumero"> Insira o segundo número: </label>
+    <input type="text" id="segundoNumero" name="segundoNumero"><br><br>
+
+    <label for="operacao"> Escolha um operação: </label>
+    <select id="operacoes" name="operacoes">
+        <option value="vazio"></option>
+        <option value="soma"> + </option>
+        <option value="subtracao"> - </option>
+        <option value="multiplicacao"> x </option>
+        <option value="divisao"> ÷ </option>
+    </select><br><br>
+
+    <button onclick="exibirValor()"> Calcular </button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function exibirValor() {
+            const numero1Input = document.getElementById("numero");
+            const numero1 = numero1Input.value;
+            console.log(numero1);
+            
+            const numero2Input = document.getElementById("segundoNumero");
+            const numero2 = numero2Input.value;
+            console.log(numero2);
+
+            const operadorInput = document.getElementById("operacoes");
+            const operador = operadorInput.value;
+            console.log(operador);
+            let resultadoConta = "";
+
+            if (operador == "soma") {
+                console.log("soma")
+                resultadoConta = parseInt(numero1) + parseInt(numero2);
+            }
+
+            else if (operador == "subtracao") {
+                console.log("subtracao")
+                resultadoConta = parseInt(numero1) - parseInt(numero2)
+            }
+
+            else if (operador == "multiplicacao") {
+                console.log("multplicacao")
+                resultadoConta = parseInt(numero1) * parseInt(numero2)
+            }
+
+            else if (operador == "vazio") {
+                alert("Escolha um operador para que a conta seja efetuada")
+            }
+
+            else {
+                console.log("divisao")
+                resultadoConta = parseInt(numero1) / parseInt(numero2)
+            }
+
+            console.log(resultadoConta);
+            document.getElementById("resultado").textContent = "O resultado da conta é: " + resultadoConta;
+        }
+    </script>
+
+    <!-- 2. Calculadora Simples: -->
+
+    <h1> Conversor de temperatura: </h1>
+    <form id="conversaoTemp">
+        <label for="temperatura"> Informe a temperatura: </label>
+        <input type="text" id="temperatura" name="temperatura">
+    </form><br>
+
+    <label for="conversao"> Escolha a forma de conversão: </label>
+    <select id="formasConverter" name="formasConverter">
+        <option value="vazio"></option>
+        <option value="C_to_F"> °C para °F </option>
+        <option value="F_to_C"> °F para °C </option>
+    </select>
+
+    <button onclick="converterTemp()"> Converter </button>
+    <p id="resultado"></p>
+
+    <script>
+        function converterTemp() {
+            const valorInput = document.getElementById("temperatura");
+            const valorTemp = valorInput.value;
+            document.getElementById("resultado").textContent = "O valor de " + temperatura + " após a conversão é: " + valorTemp
+        }
+    </script>
+</body>
+</html>
