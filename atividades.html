@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Exercícios </title>
 </head>
-<body>
+
     <!-- NIVEL 1: BÁSICO
 
     1. Calculadora Simples: -->
@@ -70,7 +70,7 @@
             console.log(resultadoConta);
             document.getElementById("resultado").textContent = "O resultado da conta é: " + resultadoConta;
         }
-    </script>
+    </script><br><br>
 
     <!-- 2. Calculadora Simples: -->
 
@@ -83,9 +83,9 @@
     <label for="conversao"> Escolha a forma de conversão: </label>
     <select id="formasConverter" name="formasConverter">
         <option value="vazio"></option>
-        <option value="C_to_F"> °C para °F </option>
-        <option value="F_to_C"> °F para °C </option>
-    </select>
+        <option value="°C para °F"> °C para °F </option>
+        <option value="°F para °C"> °F para °C </option>
+    </select><br><br>
 
     <button onclick="converterTemp()"> Converter </button>
     <p id="resultado"></p>
@@ -93,9 +93,73 @@
     <script>
         function converterTemp() {
             const valorInput = document.getElementById("temperatura");
+            console.log(valorInput)
             const valorTemp = valorInput.value;
-            document.getElementById("resultado").textContent = "O valor de " + temperatura + " após a conversão é: " + valorTemp
+            console.log(valorTemp)
+                        
+            if (formasConverter.value == "°C para °F") {
+                resultado = (valorTemp * 9/5) + 32
+                console.log("°C para °F")
+            }
+            else if(formasConverter.value == "°F para °C") {
+                resultado = (valorTemp - 32) * 5/9
+                console.log("°F para °C")
+            }
+            else {
+            document.getElementById("resultado").textContent = "Selecione uma forma de conversão.";
+            return;
+            }
+
+            document.getElementById("resultado").textContent = "O valor de " + valorTemp + ", após a conversão  de " + formasConverter.value + ", é: " + resultado;
+            console.log(resultado)
+        }
+    </script><br><br>
+
+
+    <!-- 3. Validador de Email: -->
+
+    <h1> Validador de Email: </h1>
+    <label for="validador"> Insira seu Email: </label>
+    <input type="text" id="email" name="email"><br><br>
+    <button onclick="validarEmail()"> Validar </button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function validarEmail() {
+            const email = document.getElementById("email").value;
+            const resultado = document.getElementById("resultado");
+
+            const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (regexEmail.test(email)) {
+                resultado.textContent = "Seu Email é válido"
+                resultado.style.color = "green";
+            }
+            else {
+                resultado.textContent = "Seu Email é inválido"
+                resultado.style.color = "red";
+            }
+            
+        }
+    </script><br><br>
+
+
+
+    <!-- NÍVEL 2: INTERMEDIARIO -->
+
+    <!-- 4. Lista de Tarefas: -->
+    <h1> Lista de Tarefas: </h1>
+    <label for="lista"> Crie sua lista: </label>
+    <input type="text" id="lista"></input><br><br>
+    <button onclick="criarLista()"> Adicionar </button>
+
+    <script>
+        function criarLista() {
+            const adicionarProduto = document.getElementById
         }
     </script>
+
+
 </body>
 </html>
