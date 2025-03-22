@@ -88,7 +88,7 @@
     </select><br><br>
 
     <button onclick="converterTemp()"> Converter </button>
-    <p id="resultado"></p>
+    <p id="resultado2"></p>
 
     <script>
         function converterTemp() {
@@ -98,20 +98,20 @@
             console.log(valorTemp)
                         
             if (formasConverter.value == "°C para °F") {
-                resultado = (valorTemp * 9/5) + 32
+                resultado2 = (valorTemp * 9/5) + 32
                 console.log("°C para °F")
             }
             else if(formasConverter.value == "°F para °C") {
-                resultado = (valorTemp - 32) * 5/9
+                resultado2 = (valorTemp - 32) * 5/9
                 console.log("°F para °C")
             }
             else {
-            document.getElementById("resultado").textContent = "Selecione uma forma de conversão.";
+            document.getElementById("resultado2").textContent = "Selecione uma forma de conversão.";
             return;
             }
 
-            document.getElementById("resultado").textContent = "O valor de " + valorTemp + ", após a conversão  de " + formasConverter.value + ", é: " + resultado;
-            console.log(resultado)
+            document.getElementById("resultado2").textContent = "O valor de " + valorTemp + ", após a conversão  de " + formasConverter.value + ", é: " + resultado;
+            console.log(resultado2)
         }
     </script><br><br>
 
@@ -123,7 +123,7 @@
     <input type="text" id="email" name="email"><br><br>
     <button onclick="validarEmail()"> Validar </button>
 
-    <p id="resultado"></p>
+    <p id="resultado3"></p>
 
     <script>
         function validarEmail() {
@@ -133,12 +133,12 @@
             const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
             if (regexEmail.test(email)) {
-                resultado.textContent = "Seu Email é válido"
-                resultado.style.color = "green";
+                resultado3.textContent = "Seu Email é válido"
+                resultado3.style.color = "green";
             }
             else {
-                resultado.textContent = "Seu Email é inválido"
-                resultado.style.color = "red";
+                resultado3.textContent = "Seu Email é inválido"
+                resultado3.style.color = "red";
             }
             
         }
@@ -151,20 +151,72 @@
     <!-- 4. Lista de Tarefas: -->
     <h1> Lista de Tarefas: </h1>
     <label for="lista"> Crie sua lista: </label>
-    <input type="text" id="lista"></input><br><br>
-    <button onclick="adicionarLista()"> Adicionar </button>
-    <button onclick="adicionarLista()"> Remover </button>
+    <input type="text" id="inputLista"></input><br><br>
+    <button onclick="adicionarItem()"> Adicionar </button>
+    <button onclick="removerItem()"> Remover </button>
 
     <ul id="lista"></ul>
 
     <script>
-        function criarLista() {
-            const input = document.getElementById("item");
+        function adicionarItem() {
+            const input = document.getElementById("inputLista");
+            console.log(input)
+            const lista = document.getElementById("lista");
+            console.log(lista)
+
+            if (input.value.trim() !== "") {
+                const novoItem = document.createElement("li");
+                novoItem.textContent = input.value;
+                lista.appendChild(novoItem);
+                console.log(novoItem)
+            }
+            else {
+                alert("Insira um item para adicionar a lista!")
+            }
+        }
+
+        function removerItem() {
+            const inputLista = document.getElementById("inputLista");
             const lista = document.getElementById("lista");
 
-            
-        }
+            if(lista.lastElementChild) {
+                const removeItem = lista.lastElementChild.textContent;
+                
+                
+                lista.removeChild(lista.lastElementChild);
+                alert("O item " + removeItem + " foi removido da lista com sucesso!");
+            }
+            else {
+                alert("Não há itens para remover!")
+            }
+        };        
     </script>
+
+    <!-- 5. Formulário de Feedback: -->
+    <h1> Formulário de Feedback </h1>
+    <h3> Conte-nos sua avaliação: </h3>
+    <label for="formulario"> Nome: </label>
+    <input type="text" id="nome"></input><br><br>
+
+    <label for="formulario"> Email: </label>
+    <input type="email" id="email"></input><br><br>
+
+    <label for="formulario"> Avaliação: </label>
+    <input type="radio" id="ruim" name="avaliacao" value="Ruim">
+    <label for="ruim">Ruim</label>
+
+    <input type="radio" id="regular" name="avaliacao" value="Regular">
+    <label for="regular">Regular</label>
+
+    <input type="radio" id="bom" name="avaliacao" value="Bom">
+    <label for="bom">Bom</label>
+
+    <input type="radio" id="excelente" name="avaliacao" value="Excelente">
+    <label for="excelente">Excelente</label>
+    <br><br>
+    <label for="formulario"> Comentário: </label>
+    <input type="text" id="comentario"></input><br><br>
+
 
 
 </body>
