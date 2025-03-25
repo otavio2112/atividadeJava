@@ -214,10 +214,28 @@
     <input type="radio" id="excelente" name="avaliacao" value="Excelente">
     <label for="excelente">Excelente</label>
     <br><br>
-    <label for="formulario"> Comentário: </label>
-    <input type="text" id="comentario"></input><br><br>
+    
+    <label for="formulario"> Comentário: </label><br>
+    <textarea name="comentario" id="comentario"></textarea><br><br>
 
+    <button onclick="enviarFeedback()"> Enviar </button>
 
+    <script>
+        function enviarFeedback() {
+            const nome = document.getElementById("nome").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const avaliacao = document.querySelector('input[name="avaliacao"]:checked');
+            const comentario = document.getElementById("comentario").value.trim();
+
+            if (!nome|| !email || !avaliacao || !comentario) {
+                alert("Você deve preencher todos os campos para enviar o feedback!")
+                return;
+            }
+            else {
+                alert("Feedback enviado com sucesso!")
+            }
+        }
+    </script>
 
 </body>
 </html>
